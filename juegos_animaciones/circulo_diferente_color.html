@@ -1,0 +1,42 @@
+<canvas width="600px" height="400px">  </canvas>
+
+<script>
+	
+	var lienzo = document.querySelector("canvas")
+	var pincel = lienzo.getContext("2d")
+
+	pincel.fillStyle = "gray"
+	pincel.fillRect(0, 0, 600, 400)
+
+	var colores = ["blue", "red" , "green"]
+	var colorActual = 0
+
+	function dibujarCirculo(evento) {
+
+		var x = evento.pageX - lienzo.offsetLeft
+		var y = evento.pageY - lienzo.offsetTop
+
+		pincel.fillStyle = colores[colorActual]
+		pincel.beginPath()
+		pincel.arc(x, y, 10, 0, 2*3.14)
+		pincel.fill()
+
+	}
+
+	lienzo.onclick = dibujarCirculo
+
+	function alterarColor() {
+
+		colorActual++
+	
+		if(colorActual >= colores.length) {
+			colorActual = 0
+		}
+
+		return false
+
+	}
+
+	lienzo.oncontextmenu = alterarColor
+
+</script>

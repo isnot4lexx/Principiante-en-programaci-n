@@ -1,0 +1,46 @@
+<meta charset="UTF-8">
+
+<h1>RETO - juego de adivinación</h1>
+
+<script>
+	
+	function saltarLinea() {
+		document.write("<br>")
+	}
+
+	function imprimir(frase) {
+		document.write(frase)
+		saltarLinea()
+	}
+
+	function pc(n) {
+		return Math.round(Math.random() * n)
+	}
+
+	var numeroAleatorio = pc(5)
+	var intentos = 3
+	var contador = 1
+
+	while(contador <= intentos) {
+
+		var numeroElegido = parseInt(prompt("Elige un número del 0-5"))
+
+		if (numeroElegido == numeroAleatorio) {
+			alert("Correcto, usted adivino el número en el intento " + contador)
+			break;
+		} else if (numeroElegido > numeroAleatorio) {
+			alert("Incorrecto, su número era menor que el número correcto")
+		} else {
+			alert("Incorrecto, su número era mayor que el número correcto")
+		}
+
+		contador++
+	}
+
+	if (numeroElegido != numeroAleatorio) {
+		imprimir("Lo siento, perdiste:( El número correcto era: " + numeroAleatorio)
+	}
+
+	imprimir("fin")
+
+</script>

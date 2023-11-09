@@ -1,0 +1,30 @@
+<canvas width="600px" height="400px"> </canvas>
+
+<script>
+	
+	var lienzo = document.querySelector("canvas")
+	var pincel = lienzo.getContext("2d")
+
+	//canvas / fondo
+	pincel.fillStyle = "gray"
+	pincel.fillRect(0, 0, 600, 400)
+
+	//cabeza
+	pincel.fillStyle = "darkgreen"
+	pincel.fillRect(125, 50, 350, 300)
+
+	//ojos
+	pincel.fillStyle = "black"
+	pincel.fillRect(175, 100, 90, 90)
+	pincel.fillRect(330, 100, 90, 90)
+
+	//nariz
+	pincel.fillStyle = "black"
+	pincel.fillRect(262, 190, 70, 100)
+
+	//boca
+	pincel.fillStyle = "black"
+	pincel.fillRect(222, 240, 40, 110)
+	pincel.fillRect(332, 240, 40, 110)
+
+</script>

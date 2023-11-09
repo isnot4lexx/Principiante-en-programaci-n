@@ -1,0 +1,33 @@
+<meta charset="UTF-8">
+
+<h1>Inicio de sesión</h1>
+
+<script>
+
+    //El usuario y la contraseña
+    var inicioDeSesionRegistrado = "alura";
+    var contrasenhaRegistrada = "alura321";
+
+    var intentoActual = 1
+    var maximoIntentos = 3
+
+    while(intentoActual <= maximoIntentos) {
+
+        var inicioDeSesionIngresado = prompt("Ingrese su usuario");
+        var contrasenhaIngresada = prompt("Ingrese su contraseña");
+
+        if (inicioDeSesionRegistrado == inicioDeSesionIngresado && contrasenhaRegistrada == contrasenhaIngresada) {
+            alert("Bienvenido al sistema " + inicioDeSesionIngresado);
+            break;
+        } else {
+            if (intentoActual == 3) {
+                alert("Lo sentimos, ya no tienes mas intentos.")
+            } else {
+                alert("Incio de sesión invalido, por favor intente de nuevo")
+            }
+        }
+
+        intentoActual++
+    }
+
+</script>

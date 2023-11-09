@@ -1,0 +1,39 @@
+<meta charset="UTF-8">
+
+<h1>Reto utilzando arrays y ciclo for</h1>
+
+<input/>
+<button>Comprobar</button>
+
+<script>
+	
+	var nombres = ["alex", "miriam", "isma", "cesar", "cata"]
+	var input = document.querySelector("input")
+
+	function verificar() {
+
+		var encontrado = false
+	
+		for (var i = 0; i < nombres.length; i++) {
+
+			if(input.value == nombres[i]) {
+				alert("Correcto, alguien se llamaba asi")
+				encontrado = true
+				break;
+
+			}
+         } 
+
+		if (encontrado == false) {
+			alert("Incorrecto")
+		}
+
+		input.value = ""
+		input.focus()
+
+    }
+
+	var boton = document.querySelector("button")
+	boton.onclick = verificar
+
+</script>

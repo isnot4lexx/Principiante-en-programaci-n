@@ -1,0 +1,99 @@
+<canvas width="600px" height="400px"> </canvas>
+
+<script>
+	
+    let lienzo = document.querySelector("canvas")
+    let pincel = lienzo.getContext("2d")
+
+    pincel.fillStyle = "gray"
+    pincel.fillRect(0,0,600,400)
+
+    let puedoDibujar = false
+
+    //variables para dibujar la paleta de colores
+    let xRojo = 0 // empieza en 0 porque su coordenada en x es 0 
+    let xVerde = 50
+    let xAzul = 100
+    let yCuadrados = 0
+    let tamanoCuadrados = 50
+    let colorActual = "blue"
+
+    //sirve para ser el pincel de los circulos 
+    function dibujarCirculo(x,y,colorActual) {
+
+        if(puedoDibujar == true) {
+            pincel.fillStyle = colorActual
+            pincel.beginPath()
+            pincel.arc(x,y, 5, 0, 2*Math.PI)
+            pincel.fill()
+        }    
+    }
+
+    //sirve para dibujar cada uno de los cuadrados de la paleta de colores 
+    function dibujarCuadrados(x,y,tamano,color) {
+
+        pincel.fillStyle = color
+        pincel.fillRect(x, y, tamano, tamano)
+        pincel.fill()
+
+    }
+
+    //dibujara los 3 cuadrados en el canvas
+    function dibujarPaletaColores() {
+
+        dibujarCuadrados(xRojo, yCuadrados, tamanoCuadrados, "red")
+        dibujarCuadrados(xVerde, yCuadrados, tamanoCuadrados, "green")
+        dibujarCuadrados(xAzul, yCuadrados, tamanoCuadrados, "blue")
+    }
+
+    function habilitarDibujar() {
+        puedoDibujar = true
+    }
+
+    function deshabilitarDibujar() {
+        puedoDibujar = false
+    }
+
+    //sirve para que en la paleta de colores no puedan dibujar 
+    function puededisenar(xCoordenada, yCoordenada) {
+
+        if (xCoordenada >= 0 && xCoordenada < (3*tamanoCuadrados + 5) && yCoordenada >= 0 && yCoordenada (tamanoCuadrados + 5)) {
+            return false
+        } else {
+            return true
+        }
+    }
+
+    function capturarMovimientoDelMouse(evento) {
+
+        let x = evento.pageX - lienzo.offsetLeft
+        let y = evento.pageY - lienzo.offsetTop
+
+        if (puededisenar(x,y)) {
+            dibujarCirculo(x,y, colorActual)
+        }
+    }
+
+    function seleccionarColor(evento) {
+
+        let x = evento.pageX - lienzo.offsetLeft
+        let y = evento.pageY - lienzo.offsetTop
+
+        if (y > yCuadrados && y < (yCuadrados + tamanoCuadrados)) {
+            if (x > xRojo && x < (xRojo + tamanoCuadrados)) {
+                colorActual = "red"
+            } else if (x > xVerde && x < (xVerde + tamanoCuadrados)) {
+                colorActual = "green"
+            } else if (x > xAzul && x < (xAzul + tamanoCuadrados)) {
+                colorActual = "blue"
+            }
+        }
+    }
+
+    lienzo.onmousemove = capturarMovimientoDelMouse
+    lienzo.onmousedown = habilitarDibujar
+    lienzo.onmouseup = deshabilitarDibujar
+    dibujarPaletaColores()
+    lienzo.onclick = seleccionarColor
+
+</script>

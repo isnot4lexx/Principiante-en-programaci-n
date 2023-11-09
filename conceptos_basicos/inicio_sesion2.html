@@ -1,0 +1,34 @@
+<meta charset="UTF-8">
+
+<h1>Inicio de sesión - reto</h1>
+
+<script>
+	
+	var usuarioGuardado = "alura"
+	var contrasehaGuardada = "alura321"
+
+	var intentos = 3
+	var intentosRegistrados = 1
+
+	while(intentosRegistrados <= intentos) {
+
+		var usuarioIngresado = prompt("Ingrese su nombre de usuario")
+		var contrasehaIngresada = prompt("Ingrese su contraseña")
+
+		if (usuarioIngresado == usuarioGuardado && contrasehaIngresada == contrasehaGuardada) {
+			alert("Bienvenido al sistema " + usuarioGuardado)
+			break;
+		} else {
+			if (intentosRegistrados == 3) {
+				alert("Lo siento, número de intentos máximo")
+			} else {
+				alert("Incio de sesión invalido, por favor intente de nuevo")
+			}
+		}
+
+		intentosRegistrados++
+	}
+
+	
+
+</script>

@@ -1,0 +1,26 @@
+<meta charset="UTF-8">
+
+<h1>Año de los Mundiales del FIFA</h1>
+
+<script>
+		
+	function saltarLinea() {
+		document.write("<br>")
+	}
+
+	function imprimir(frase) {
+		document.write(frase)
+		saltarLinea()
+	}
+
+	var anhoMundial = 1930
+	var limite = parseInt(prompt("Ingrese un año para calcular cuantos mundiales se hicieron"))
+
+	while(anhoMundial <= limite) {
+		imprimir("Hubo mundial de la FIFA en el año " + anhoMundial)
+		anhoMundial = anhoMundial + 4
+	}
+
+	imprimir("FIN")	
+
+</script>
